@@ -129,3 +129,9 @@ STATICFILES_DIRS = [
 # static는 앱 안의 폴더
 
 STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+
+
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+
+MEDIA_URL = '/media/'
+

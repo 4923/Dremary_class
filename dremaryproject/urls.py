@@ -16,6 +16,11 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 from page import views
+# media는 추가로 하단 내용 import해야함
+from django.conf import settings
+from django.conf.urls.static import static
+
+
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -23,4 +28,4 @@ urlpatterns = [
     path('introduce/', views.introduce, name = "introduce"),
     # path를 생성해서 url을 얼마든지 만들 수 있다.
     # url과 path 이름을 같게 지정하는게 편함
-]
+] + static(settings.MEDIA_URL, document_root = settings.MEDIA_ROOT) # 이것도 작성해야 사용자가 올린 파일들도 관리 할 수 있음
