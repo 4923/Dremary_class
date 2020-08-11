@@ -119,3 +119,13 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.1/howto/static-files/
 
 STATIC_URL = '/static/'
+
+import os
+
+STATICFILES_DIRS = [
+  os.path.join(BASE_DIR, 'page', 'static')
+]
+# page는 앱 이름
+# static는 앱 안의 폴더
+
+STATIC_ROOT = os.path.join(BASE_DIR, 'static')
