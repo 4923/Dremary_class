@@ -20,4 +20,7 @@ from page import views
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('',views.home, name = "home"),
+    path('introduce/', views.introduce, name = "introduce"),
+    # path를 생성해서 url을 얼마든지 만들 수 있다.
+    # url과 path 이름을 같게 지정하는게 편함
 ]
