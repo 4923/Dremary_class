@@ -73,61 +73,7 @@
   <!-- Main Content -->
   <main role="main">
 
-    <section class="jumbotron text-center">
-      <div class="container">
-        <h1>드리머리</h1><br>
-        <p class="lead text-muted">열정있는 디자이너에게 받는<br>합리적 헤어서비스, 드리머리</p>
-        <p>
-          <a href="{% url 'introduce' %}" class="btn btn-outline-danger">드리머리 알아보기</a>
-        </p>
-      </div>
-    </section>
-
-    <div class="album py-5 bg-light">
-      <div class="container">
-        <!-- Queryset: 프로필카드를 쿼리셋을 이용해 노출시키기 -->
-        <div class="card-columns">
-          {% for designer in designers %}
-          <div class="card mb-4 shadow-sm">
-            <!--Image-->
-            <!-- 이미지가 없는 예외상황 처리하기위해 if-else 템플릿언어 씀 -->
-            {% if designer.image %}
-            <img src=" {{ designer.image.url }}" class="card-img-top" alt="Desinger_Image">
-            {% else %}
-            <!-- 이미지가 없을 땐 원래 부트스트랩에 있던거 사용-->
-            <svg class="bd-placeholder-img card-img-top" width="100%" height="225" xmlns="http://www.w3.org/2000/svg"
-              preserveAspectRatio="xMidYMid slice" focusable="false" role="img" aria-label="Placeholder: Thumbnail">
-              <title>Dremary</title>
-              <rect width="100%" height="100%" fill="#55595c" /><text x="50%" y="50%" fill="#eceeef"
-                dy=".3em">Profile</text>
-              </svg>
-              {% endif %}
-            <div class="card-body">
-              <!-- Ctrl + D로 한 줄 복사 -->
-              <h5 class = "card-title"> {{designer.name}} </h5>
-              <h6 class="card-text"> {{ desinger.address }} </h6>
-              <hr>  <!-- <hr> 수평선 -->
-              <p class="card-text"> {{ designer.description }} </p>
-              <div class = "d-flex justify-content-between align-items-center">
-                <div class="btn-group">
-                  <a href="{% url 'detail' designer.id}" class = "btn btn-sm btn-outline-secondary">자세히 알아보기 </a>
-                </div>
-              </div>
-            </div>
-          </div>
-          {% endfor %}
-        </div>
-      </div>
-    </div>
-  </main>
-
-  <footer class="text-muted">
-    <div class="container">
-      <p class="float-right">
-        <a href="#">맨 위로 돌아가기</a>
-      </p>
-      <p>Develop Dremary with Django & Bootstrap</p>
-      <p>Likelion 8th</p>
+    
     </div>
   </footer>
   <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
