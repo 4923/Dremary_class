@@ -28,6 +28,6 @@ urlpatterns = [
     path('introduce/', views.introduce, name = "introduce"),
     # path를 생성해서 url을 얼마든지 만들 수 있다.
     # url과 path 이름을 같게 지정하는게 편함
-    path('profile/<int:designer_id>,views.detail, name="detail"),
+    path('profile/<int:designer_id>',views.detail, name="detail"),
     # Path converter. 아직 views.detail이 없어서 이제 만들러 가야 함
 ] + static(settings.MEDIA_URL, document_root = settings.MEDIA_ROOT) # 이것도 작성해야 사용자가 올린 파일들도 관리 할 수 있음
