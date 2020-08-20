@@ -24,7 +24,7 @@ from django.conf.urls.static import static
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('',include(page.urls)),  # 아무것도 없을 때 앱을 불러온다. 아무것도 없는 url로 접근했을 때 page.urls에 있는 path를 참조하게 됨
+    path('',include('page.urls')),  # 아무것도 없을 때 앱을 불러온다. 아무것도 없는 url로 접근했을 때 page.urls에 있는 path를 참조하게 됨
   ''' 
   [URL include: 6강]=> 이부분들 page/urls.py로 이동함
     path('',views.home, name = "home"),
