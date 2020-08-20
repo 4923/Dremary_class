@@ -1,7 +1,6 @@
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 from .models import Designer
 # [QuerySet] Model의 존재 알려주기
-from django .shortcut import render, get_object_or_404
 
 # Create your views here.
 def home(request):
