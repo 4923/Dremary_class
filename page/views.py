@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from .models import Designer
 # [QuerySet] Model의 존재 알려주기
+from django .shortcut import render, get_object_or_404
 
 # Create your views here.
 def home(request):
@@ -11,3 +12,7 @@ def home(request):
   # return의 인자는 최대 세개 (필수 두개: request, template), 마지막 하나는 template에 넘겨줄 값을 dict처럼
 def introduce(request):
   return render (request, 'introduce.html')
+
+def detail(request, designer_id):
+  designer = get_object_or_404(Designer, pk = designer_it)
+  return render(request, 'detail.html',{'designer':designer}
