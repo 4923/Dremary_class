@@ -12,6 +12,7 @@ def home(request):
 def introduce(request):
   return render (request, 'introduce.html')
 
-def detail(request, designer_id):
+
+def detail(request, designer_id): # 인자에 request, pk 로 적으면 안됨. urls.py에서 정한 pk 이름을 적어야함
   designer = get_object_or_404(Designer, pk = designer_it)
   return render(request, 'detail.html',{'designer':designer}
