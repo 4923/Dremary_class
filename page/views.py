@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from .models import designer
+from .models import Designer
 # [QuerySet] Model의 존재 알려주기
 
 # Create your views here.

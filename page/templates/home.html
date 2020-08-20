@@ -71,13 +71,13 @@
   <!--Header -->
   <header>
     <div id = "navbar" class="navbar navbar-expand-lg navbar-light-bg-light sticky top">
-      <a id = "logo" href = "{% url 'home'%}" class = "navbar-brand align-self-center">
-        <!--이미지, 글자 넣기-->
-        <!-- img에서 src는 file 경로, alt는 image가 뜨지 않을 때 대체설명-->
-        <img src="{% static 'images/Dremary_Logo.png' %}" width="35" height="35" alt="Dremary_Logo.png">
-        <label class="navbar-brand align-self-center">Dremary</label>
-      </a>
-    </div>
+      <a id = "logo" href = "{% url 'home'%}" class="navbar-brand align-self-center">
+  <!--이미지, 글자 넣기-->
+  <!-- img에서 src는 file 경로, alt는 image가 뜨지 않을 때 대체설명-->
+  <img src="{% static 'images/Dremary_Logo.png' %}" width="35" height="35" alt="Dremary_Logo.png">
+  <label class="navbar-brand align-self-center">Dremary</label>
+  </a>
+  </div>
   </header>
 
   <!-- Main Content -->
@@ -95,30 +95,31 @@
 
     <div class="album py-5 bg-light">
       <div class="container">
-
-        <div class="row">
-          <div class="col-md-4">
-            <div class="card mb-4 shadow-sm">
-              <svg class="bd-placeholder-img card-img-top" width="100%" height="225" xmlns="http://www.w3.org/2000/svg"
-                preserveAspectRatio="xMidYMid slice" focusable="false" role="img" aria-label="Placeholder: Thumbnail">
-                <title>Placeholder</title>
-                <rect width="100%" height="100%" fill="#55595c" /><text x="50%" y="50%" fill="#eceeef"
-                  dy=".3em">Thumbnail</text>
-              </svg>
-              <div class="card-body">
-                <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional
-                  content. This content is a little bit longer.</p>
-                <div class="d-flex justify-content-between align-items-center">
-                  <div class="btn-group">
-                    <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
-                    <button type="button" class="btn btn-sm btn-outline-secondary">Edit</button>
-                  </div>
-                  <small class="text-muted">9 mins</small>
-                </div>
-              </div>
+        <!-- Queryset: 프로필카드를 쿼리셋을 이용해 노출시키기 -->
+        <div class="card-columns">
+          {% for designer in designers %}
+          <div class="card mb-4 shadow-sm">
+            <!--Image-->
+            <!-- 이미지가 없는 예외상황 처리하기위해 if-else 템플릿언어 씀 -->
+            {% if designer.image%}
+            <img src=" {{ designer.image.url }}" class="card-img-top" alt="Desinger_Image">
+            {% else %}
+            <!-- 이미지가 없을 땐 원래 부트스트랩에 있던거 사용-->
+            <svg class="bd-placeholder-img card-img-top" width="100%" height="225" xmlns="http://www.w3.org/2000/svg"
+              preserveAspectRatio="xMidYMid slice" focusable="false" role="img" aria-label="Placeholder: Thumbnail">
+              <title>Dremary</title>
+              <rect width="100%" height="100%" fill="#55595c" /><text x="50%" y="50%" fill="#eceeef"
+                dy=".3em">Profile</text>
+            </svg>
+            {% endif %}
+            <div class = "card-body">
+              <!-- Ctrl + D로 한 줄 복사 -->
+              <h4 class="card-title"> {{ desinger.name }} </h4>
+              <h4 class="card-title"> {{ desinger.address }} </h4>
+              <hr>
+              <p class ="card-text"> {{ designer.description }} </p>
             </div>
           </div>
-
         </div>
       </div>
     </div>
@@ -143,6 +144,6 @@
   <script src="/docs/4.5/dist/js/bootstrap.bundle.min.js"
     integrity="sha384-LtrjvnR4Twt/qOuYxE721u19sVFLVSA4hf/rRt6PrZTmiPltdZcI7q7PXQBYTKyf" crossorigin="anonymous">
   </script>
-</body>
+  </body>
 
 </html>
