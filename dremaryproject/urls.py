@@ -22,16 +22,17 @@ from django.conf.urls.static import static
 
 
 
-urlpatterns = [
-    path('admin/', admin.site.urls),
-    path('',include('page.urls')),  # 아무것도 없을 때 앱을 불러온다. 아무것도 없는 url로 접근했을 때 page.urls에 있는 path를 참조하게 됨
-  ''' 
-  [URL include: 6강]=> 이부분들 page/urls.py로 이동함
+''' 
+  [URL include: 6강]=> urlpatterns 안의 이부분들 page/urls.py로 이동함
     path('',views.home, name = "home"),
     path('introduce/', views.introduce, name = "introduce"),
     # path를 생성해서 url을 얼마든지 만들 수 있다.
     # url과 path 이름을 같게 지정하는게 편함
     path('profile/<int:designer_id>',views.detail, name="detail"),
     # Path converter. 아직 views.detail이 없어서 이제 만들러 가야 함
-  '''
+'''
+
+urlpatterns = [
+    path('admin/', admin.site.urls),
+    path('',include('page.urls')),  # 아무것도 없을 때 앱을 불러온다. 아무것도 없는 url로 접근했을 때 page.urls에 있는 path를 참조하게 됨
 ] + static(settings.MEDIA_URL, document_root = settings.MEDIA_ROOT) # 이것도 작성해야 사용자가 올린 파일들도 관리 할 수 있음
