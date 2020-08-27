@@ -5,7 +5,7 @@ from . import views
 urlpatterns = [
   path('',views.home, name = "home"),
   path('introduce/', views.introduce, name = "introduce"),
-  path('profile/<int:designer_id>',views.detail, name="detail"),
+  path('profile/<int:designer_id>/',views.detail, name="detail"),
   # url에 페이지가 있다고 해서 무조건 사용해야하는건 아니다 (?)
   path('new/',views.new, name="new"),
   path('create/',views.create, name="create"),
