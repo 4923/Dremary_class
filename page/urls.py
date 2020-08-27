@@ -9,5 +9,6 @@ urlpatterns = [
   # url에 페이지가 있다고 해서 무조건 사용해야하는건 아니다 (?)
   path('new/',views.new, name="new"),
   path('create/',views.create, name="create"),
+  path('update/<int:desitner_id>/', views.update, name = "update"),
   path('delete/<int:designer_id>/', views.delete, name="delete"),
  ]

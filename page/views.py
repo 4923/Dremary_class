@@ -39,6 +39,30 @@ def create(request):
   return redirect('detail',post.id)  # 이게 django reference 표준
   # return redirect('profile/' + str(post.id))
 
+# Advanced code
+# create에서 method 두개로 나눴는데, 굳이 그래야하나?
+def update(request, designer_id):
+  post = get_object_or_404(Designer, pk = designer_id)
+
+  if request.method == 'POST':
+    if 'image' in request.FILES:
+      post.image = request.FILES['image']
+      post.name = request.POST['name']
+      post.address = request.POST['address']
+      post.description = request.POST['description']
+      
+      post.save()
+
+      # 수정된 결과 바로 확인하기 위해 redirect
+      # 여기서 detail: path 이름
+      return redirect('detail', post.id)
+
+  else: # GET일때
+    return render(request, 'update.html', {'designer' : post})
+    # desitner : post인 이유 > 미리 띄워놓기 위해
+    # update는 기존에 입력된 값을 띄워놓고 수정할 예정이기 때문
+
+
 def delete(request, designer_id):
   # 어떤게 제거가 필요한 객체인지 찾아야 한다
   post = get_object_or_404(Designer, pk=designer_id)
