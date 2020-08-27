@@ -38,4 +38,10 @@ def create(request):
 
   return redirect('detatil',post.id)  # 이게 django reference 표준
   # return redirect('profile/' + str(post.id))
-  
+
+def delete(request, designer_id):
+  # 어떤게 제거가 필요한 객체인지 찾아야 한다
+  post = get_object_or_404(Designer, pk=designer_id)
+  post.delete()
+
+  return redirect('home') 
