@@ -36,7 +36,7 @@ def create(request):
 
     post.save()
 
-  return redirect('detatil',post.id)  # 이게 django reference 표준
+  return redirect('detail',post.id)  # 이게 django reference 표준
   # return redirect('profile/' + str(post.id))
 
 def delete(request, designer_id):
