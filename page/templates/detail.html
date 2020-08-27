@@ -21,7 +21,8 @@
               <!-- pk 값과 path converter를 활용해서 각각의 개체에 대해 함수를 실행한다는게 뭔소리여 (7-8강에서 다룰 예정)-->
               <!-- button group: bootstrap 문법-->
               <!-- 아니 update 주석처리했었는데 왜 인식을 하냐고 왜 아예 지워야 돌아가냐고~~~ -->
-              <a href="{% url 'delete' designer.id %}" class ="btn btn-sm btn-outline-secondary">정보 삭제</a>
+              <a href="{% url 'update' designer.id %}" class ="btn btn-sm btn-outline-secondary">정보 수정</a>
+              <a href="{% url 'delete' designer.id %}" class ="btn btn-sm btn-outline-danger">정보 삭제</a>
             </div>
           </div>
         </div>
