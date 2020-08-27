@@ -47,15 +47,15 @@ def update(request, designer_id):
   if request.method == 'POST':
     if 'image' in request.FILES:
       post.image = request.FILES['image']
-      post.name = request.POST['name']
-      post.address = request.POST['address']
-      post.description = request.POST['description']
+    post.name = request.POST['name']
+    post.address = request.POST['address']
+    post.description = request.POST['description']
       
-      post.save()
+    post.save()
 
       # 수정된 결과 바로 확인하기 위해 redirect
       # 여기서 detail: path 이름
-      return redirect('detail', post.id)
+    return redirect('detail', post.id)
 
   else: # GET일때
     return render(request, 'update.html', {'designer' : post})
