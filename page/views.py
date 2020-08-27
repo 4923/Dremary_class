@@ -1,8 +1,7 @@
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render, get_object_or_404, redirect
 from .models import Designer
 # [QuerySet] Model의 존재 알려주기
 
-# Create your views here.
 def home(request):
   designers = Designer.objects.all()
   # [QuerySet] QuerySet을 Templates로 보내기: 지금까지 만들어진 객체를 Designers에 한번에 넣기 (.all())
@@ -19,3 +18,24 @@ def detail(request, designer_id): # 인자에 request, pk 로 적으면 안됨. 
   # get_object_or_404에서 객체를 찾아서 designer라는 변수에 넣어준 다음에 -> detail.html로 보냄
   return render(request, 'detail.html',{'designer':designer})
   # 'designer'라는 이름으로 변수 designer를 보냄
+
+def new(request):
+  return render(request, 'new.html')
+
+def create(request):
+  # 객체 생성
+  # method가 POST일때만 작동
+  if request.method == 'POST':
+    post = Designer()
+    # 파일이 진짜 있는지 체크
+    if 'image' in request.FILES:
+      post.image = request.FILES['image']
+    post.name = request.POST['name']
+    post.address = request.POST['address']
+    post.description = request.POST['description']
+
+    post.save()
+
+  return redirect('detatil',post.id)  # 이게 django reference 표준
+  # return redirect('profile/' + str(post.id))
+  
